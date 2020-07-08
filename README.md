@@ -10,6 +10,7 @@ Features
 The following non-exhaustive list shows some features implemented in pytmipe:
 * Token and privileges management:
   * get, enable or disable privilege(s) on token for current or remote thread
+  * get local or remote token information
   * get effective token for current thread (impersonation or primary token)
 * get many information about selected token(s):
   * elevation type
@@ -31,16 +32,16 @@ The following non-exhaustive list shows some features implemented in pytmipe:
 * Impersonate a token or user:
   * Make Token and Impersonate (requires credentials of user)
   * Token impersonation/theft (specific privileges are required): impersonate a chosen token
-  * Create Process with a token (specific privileges are required): imeprsoanate a chosen token and create new process
+  * Create Process with a token (specific privileges are required): impersonate a chosen token and create new process
   * __Impersonate first *nt authority\system* token__ found
   * impersonate primary token of remote process with pid
 * Escalation methods:
   * __Parent PID Spoofing__ - Handle Inheritance
-  * Service Manager via direct command or named pipe impersonation: local administrator to *nt authority\system*
+  * Service Manager via direct command or named pipe impersonation: local administrator to *nt authority\system* (or orther privileged account)
   * Task scheduler via direct command or named pipe impersonation: local administrator to *nt authority\system*
   * WMI job via direct command or named pipe impersonation: local administrator to *nt authority\system*
-  * __Printer Bug__: SeImpersonatePrivilege to *nt authority\system*
-  * __RPCSS__: SeImpersonatePrivilege to *nt authority\system*
+  * __Printer Bug__: *SeImpersonatePrivilege* to *nt authority\system*
+  * __RPCSS__: *SeImpersonatePrivilege* to *nt authority\system*
   * __Re enable privileges__ via task scheduling and named pipe impersonation
   
 Dependencies
@@ -78,7 +79,7 @@ imp = Impersonate()
 imp.searchAndImpersonateFirstSystemToken(targetPID=None)
 ```
 
-Exploit the "Printer Bug" for privilege escalation from SeImpersonatePrivilege to *nt authority\system*:
+Exploit the "Printer Bug" for privilege escalation from *SeImpersonatePrivilege* to *nt authority\system*:
 ```python
 esc = Escalation()
 esc.namedPipeImpersonationViaPrinterBug()
