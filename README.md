@@ -7,13 +7,13 @@ Features
 ====
 
 * A __python client__: *python3 tmipe.py*
-* A __python library__, for including this project in another one (e.g. *tokenmanager.py*)
+* A __python library__: *pytmipe*. Useful for including this project in another one (e.g. *tokenmanager.py*)
 * __pytinstaller examples__, for getting __standalones__ exes
 
 Capabilities
 ====
 
-The following non-exhaustive list shows some features implemented in *pytmipe*:
+The following __non-exhaustive__ list shows some features implemented in *pytmipe* library:
 * Token and privileges management:
   * get, enable or disable privilege(s) on token for current or remote thread
   * get local or remote token information
@@ -52,7 +52,7 @@ All other modules uses ctypes only.
 HOW TO USE
 ====
 
-For __python client__:
+For __python client__ (named *tmipe*):
 
 ```console
 python.exe tmipe.py -h
@@ -97,10 +97,33 @@ optional arguments:
   --version              show program's version number and exit
 ```
 
-For __python library__, see source code and examples.
+For __python library__ (named *pytmipe*), see source code and examples.
 Normally, I have well documented the source code...
+Most of functions are documented.
 
-For __pyinstaller examples__, see files in *src/examples/* folders.
+For __pyinstaller examples__ and standalones, see files in *src/examples/* folders.
+
+Examples
+====
+
+For impersonating the first *system* token and get a cmd.exe prompt as *system* from python client (*tmipe*):
+```console
+python.exe tmipe.py searchimpfirstsystem -vv
+```
+
+For doing the same thing thanks to the *pytmipe* library directly, see the *src/examples/searchAndImpersonateFirstSystemToken.py*:
+```python
+from impersonate import Impersonate
+from utils import configureLogging
+
+configureLogging()
+imp = Impersonate()
+imp.searchAndImpersonateFirstSystemToken(targetPID=None, printAllTokens=False)
+```
+It will open a cmd.exe prompt as *system* if the current Windows user has required rights.
+
+Of course, from this source code, you can create a standlone exe with *pyinstaller*.
+
 
 Donation
 ====
