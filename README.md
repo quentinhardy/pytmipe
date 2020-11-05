@@ -10,10 +10,10 @@ Features
 * A __python library__, for including this project in another one (e.g. *tokenmanager.py*)
 * __pytinstaller examples__, for getting __standalones__ exes
 
-Features
+Capabilities
 ====
 
-The following non-exhaustive list shows some features implemented in pytmipe:
+The following non-exhaustive list shows some features implemented in *pytmipe*:
 * Token and privileges management:
   * get, enable or disable privilege(s) on token for current or remote thread
   * get local or remote token information
@@ -49,15 +49,58 @@ Many features of *pywin32* have been re developped in pytmipe to avoid the use o
 However, Task Scheduler module still uses *pywin32* (more precisely *pythoncom*) by lack of time.
 All other modules uses ctypes only.
 
-Examples
-====
-
-See *examples* folder in *src* for many examples.
-  
 HOW TO USE
 ====
-See source code and examples.
+
+For __python client__:
+
+```console
+python.exe tmipe.py -h
+usage: tmipe.py [-h] [--version]
+                {cangetadmin,printalltokens,printalltokensbyname,printalltokensbypid,printsystemtokens,searchimpfirstsystem,imppid,imptoken,printerbug,rpcss,spoof,impuser,runas,scm}
+                ...
+
+                      **
+    888888  8b    d8  88  88""Yb  888888
+      88    88b  d88  88  88__dP  88__
+      88    88YbdP88  88  88"""   88""
+      88    88 YY 88  88  88      888888
+-------------------------------------------
+Token Manipulation, Impersonation and
+     Privilege Escalation (Tool)
+-------------------------------------------
+By Quentin HARDY (quentin.hardy@protonmail.com)
+
+positional arguments:
+  {cangetadmin,printalltokens,printalltokensbyname,printalltokensbypid,printsystemtokens,searchimpfirstsystem,imppid,imptoken,printerbug,rpcss,spoof,impuser,runas,scm}
+
+                         Choose a main command
+    cangetadmin          Check if user can get admin access
+    printalltokens       Print all tokens accessible from current thread
+    printalltokensbyname
+                         Print all tokens accessible from current thread by account name
+    printalltokensbypid  Print all tokens accessible from current thread by pid
+    printsystemtokens    Print all system tokens accessible from current
+    searchimpfirstsystem
+                         search and impersonate first system token
+    imppid               impersonate primary token of selected pid and try to spawn cmd.exe
+    imptoken             impersonate primary or impersonation token of selected pid/handle and try to spawn cmd.exe
+    printerbug           exploit the "printer bug" for getting system shell
+    rpcss                exploit "rpcss" for getting system shell
+    spoof                parent PID Spoofing ("handle inheritance)"
+    impuser              create process with creds with impersonation
+    runas                create process with creds as runas
+    scm                  create process with Service Control Manager
+
+optional arguments:
+  -h, --help             show this help message and exit
+  --version              show program's version number and exit
+```
+
+For __python library__, see source code and examples.
 Normally, I have well documented the source code...
+
+For __pyinstaller examples__, see files in *src/examples/* folders.
 
 Donation
 ====
