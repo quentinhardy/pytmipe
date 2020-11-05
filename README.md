@@ -1,8 +1,14 @@
 PYTMIPE
 ====
 
-__PYTMIPE__ (PYthon library for Token Manipulation and Impersonation for Privilege Escalation) is a Python library for manipulating Windows tokens and managing impersonations in order to gain more privileges on Windows. It implements some exploits for local privilege escalations on Windows (e.g. RPCSS local PE, Printer Bug local PE).
+__PYTMIPE__ (PYthon library for Token Manipulation and Impersonation for Privilege Escalation) is a Python 3 library for manipulating Windows tokens and managing impersonations in order to gain more privileges on Windows. It implements some exploits for local privilege escalations on Windows (e.g. RPCSS local PE, Printer Bug local PE).
 
+Features
+====
+
+* A __python client__: *python3 tmipe.py*
+* A __python library__, for including this project in another one (e.g. *tokenmanager.py*)
+* __pytinstaller examples__, for getting __standalones__ exes
 
 Features
 ====
