@@ -204,7 +204,7 @@ Output:
 [...]
 ```
 
-This previous output shows an impersonation token located in the pid 2288, which has an integrity level *system*.
+This previous output shows an impersonation token located in the pid 2288 (ihandle 118), which has an integrity level *system*.
 It is possible to impersonate this specific token with the following command:
 ```console
 python.exe tmipe.py imptoken --pid 2288 --ihandle 118 -vv
