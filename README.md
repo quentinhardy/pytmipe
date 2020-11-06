@@ -134,6 +134,16 @@ For getting all tokens which are accessible from current thread, organized by pi
 python.exe tmipe.py printalltokensbypid --imp-only
 ```
 
+If you want to do this operation with the *pytmipe* library, it is easy too:
+```python
+from impersonate import Impersonate
+from utils import configureLogging
+
+configureLogging()
+imp = Impersonate()
+imp.printAllTokensAccessible(targetPID=None, printFull=True, printLinked=True, _useThreadMethod=False)
+```
+
 
 Donation
 ====
