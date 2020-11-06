@@ -124,9 +124,14 @@ It will open a cmd.exe prompt as *system* if the current Windows user has requir
 
 Of course, from this source code, you can create a standlone exe with *pyinstaller*.
 
-For getting primary and impersonation(s) tokens for current process:
+For getting primary and impersonation(s) tokens used in current process:
 ```console
 python.exe tmipe.py printalltokens --current --full --linked
+```
+
+For getting all tokens which are accessible from current thread, organized by pid, when the impersonation is possible only:
+```console
+python.exe tmipe.py printalltokensbypid --imp-only
 ```
 
 
