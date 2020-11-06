@@ -6,7 +6,7 @@ __PYTMIPE__ (PYthon library for Token Manipulation and Impersonation for Privile
 Features
 ====
 
-* A __python client__: *python3 tmipe.py*
+* A __python client__: *tmipe* (*python3 tmipe.py*)
 * A __python library__: *pytmipe*. Useful for including this project in another one (e.g. *tokenmanager.py*)
 * __pytinstaller examples__, for getting __standalones__ exes
 
