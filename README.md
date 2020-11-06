@@ -3,12 +3,26 @@ PYTMIPE
 
 __PYTMIPE__ (PYthon library for Token Manipulation and Impersonation for Privilege Escalation) is a Python 3 library for manipulating Windows tokens and managing impersonations in order to gain more privileges on Windows. It implements some exploits for local privilege escalations on Windows (e.g. RPCSS local PE, Printer Bug local PE).
 
-Features
+Content
 ====
 
 * A __python client__: *tmipe* (*python3 tmipe.py*)
 * A __python library__: *pytmipe*. Useful for including this project in another one (e.g. *tokenmanager.py*)
 * __pytinstaller examples__, for getting __standalones__ exes
+
+Main features
+====
+
+| Method    | Required Privilege(s)           |  OS (no exhaustive)  | Direct target (max)  |
+| --------------- |:------------------------------------------:| --------------------------------:|----------------------------------:|
+| Token creation & impersonation |  username & password   |   All  |  local administrator   |
+| Token Impersonation/Theft  |  *SeDebugPrivilege*      |  All    |  *nt authority\system*  |
+| Parent PID spoofing (handle inheritance) |  *SeDebugPrivilege*   |  >= Vista |  *nt authority\system*   |
+| Windows Service|  SeDebugPrivilege   |  All                       |  *nt authority\system*   |
+|  Service (SCM) | Local administrator (and high integrity level if UAC enabled)   | All   |  *nt authority\system* or domain account   |
+|  WMI Event | Local administrator (and high integrity level if UAC enabled)   | All  |  *nt authority\system*   |
+|  « Printer Bug » LPE | *SeImpersonatePrivilege* (Service account)   | Windows 8.1, 10 & Server 2012R2/2016/2019  |  *nt authority\system*   |
+|  RPCSS Service LPE | *SeImpersonatePrivilege* (Service account)   | Windows 10 & Server 2016/2019 |  *nt authority\system*   |
 
 Capabilities
 ====
