@@ -106,6 +106,8 @@ For __pyinstaller examples__ and standalones, see files in *src/examples/* folde
 Examples
 ====
 
+If you want to know how to use *pytimpe* library, see *src/examples* folder for many examples.
+
 Example 1: get *nt authority\system*
 ---------
 
@@ -213,7 +215,7 @@ python.exe tmipe.py imptoken --pid 2288 --ihandle 118 -vv
 This previous command opens a cmd.exe as *nt authority\system*.
 
 This can be done with the *pytmipe* library too. 
-Following source code impersonates the first *system* token available, print effective token and it stops impersonation:
+Following source code impersonates the first *system* token available, prints effective token and it stops impersonation:
 ```python
 from impersonate import Impersonate
 from windef import TokenImpersonation
