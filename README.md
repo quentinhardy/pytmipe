@@ -106,6 +106,9 @@ For __pyinstaller examples__ and standalones, see files in *src/examples/* folde
 Examples
 ====
 
+Example 1
+---------
+
 For impersonating the first *system* token and get a cmd.exe prompt as *system* from python client (*tmipe*):
 ```console
 python.exe tmipe.py searchimpfirstsystem -vv
@@ -124,6 +127,9 @@ It will open a cmd.exe prompt as *system* if the current Windows user has requir
 
 Of course, from this source code, you can create a standlone exe with *pyinstaller*.
 
+Example 2
+---------
+
 For getting primary and impersonation(s) tokens used in current process:
 ```console
 python.exe tmipe.py printalltokens --current --full --linked
@@ -132,6 +138,22 @@ python.exe tmipe.py printalltokens --current --full --linked
 For getting all tokens which are accessible from current thread, organized by pid, when the impersonation is possible only:
 ```console
 python.exe tmipe.py printalltokensbypid --imp-only
+```
+
+Output:
+```console
+[...]
+- PID 4276:
+        - S-1-5-18: NT AUTHORITY\SYSTEM (possible imp: True)
+- PID 7252:
+        - None
+- PID 1660:
+        - S-1-5-21-28624056-3392308708-440876048-1106: DOMAIN\USER (possible imp: True)
+        - S-1-5-20: NT AUTHORITY\NETWORK SERVICE (possible imp: True)
+        - S-1-5-18: NT AUTHORITY\SYSTEM (possible imp: True)
+        - S-1-5-90-0-1: Window Manager\DWM-1 (possible imp: True)
+        - S-1-5-19: NT AUTHORITY\LOCAL SERVICE (possible imp: True)
+[...]
 ```
 
 If you want to do this operation with the *pytmipe* library, it is easy too:
