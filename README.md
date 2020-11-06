@@ -212,6 +212,28 @@ python.exe tmipe.py imptoken --pid 2288 --ihandle 118 -vv
 
 This previous command opens a cmd.exe as *nt authority\system*.
 
+This can be done with the *pytmipe* library too. 
+Following source code impersonates the first *system* token available, print effective token and it stops impersonation:
+```python
+from impersonate import Impersonate
+from windef import TokenImpersonation
+
+allTokens = imp.getTokensAccessibleFilter(targetPID=None,
+                                          filter={'canimpersonate':True, 'sid':'S-1-5-18', 'type':TokenImpersonation},
+                                          _useThreadMethod=False)
+if allTokens == {} or allTokens==None:
+    print("No one token found for impersonation")
+else:
+    pid = list(allTokens.keys())[0] #use the first token of the first pid returned in 'allTokens'
+    firstIHandle = allTokens[pid][0]['ihandle']
+    imp.printThisToken(allTokens, pid, firstIHandle)
+    imp.impersonateThisToken(pid=pid, iHandle=firstIHandle)
+    print("Current Effective token for current thread after impersonation:")
+    imp.printCurrentThreadEffectiveToken(printFull=False, printLinked=False)
+    imp.terminateImpersonation()
+    print("Current Effective token for current thread (impersonation finished):")
+    imp.printCurrentThreadEffectiveToken(printFull=False, printLinked=False)
+```
 
 Donation
 ====
