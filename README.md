@@ -106,7 +106,7 @@ For __pyinstaller examples__ and standalones, see files in *src/examples/* folde
 Examples
 ====
 
-Example 1
+Example 1: get *nt authority\system*
 ---------
 
 For impersonating the first *system* token and get a cmd.exe prompt as *system* from python client (*tmipe*):
@@ -127,7 +127,7 @@ It will open a cmd.exe prompt as *system* if the current Windows user has requir
 
 Of course, from this source code, you can create a standlone exe with *pyinstaller*.
 
-Example 2
+Example 2: get tokens
 ---------
 
 For getting primary and impersonation(s) tokens used in current process:
@@ -165,6 +165,52 @@ configureLogging()
 imp = Impersonate()
 imp.printAllTokensAccessible(targetPID=None, printFull=True, printLinked=True, _useThreadMethod=False)
 ```
+
+Example 3: impersonate token
+---------
+
+You can impersonate a selected token.
+
+First step, get all tokens according to your filters (*system* tokens and tokens which can be impersonated by current thread):
+```console
+python.exe tmipe.py printalltokens --filter {\"sid\":\"S-1-5-18\",\"canimpersonate\":true}
+```
+
+Output:
+```console
+[...]
+- PID: 2288
+------------------------------
+  - PID: 2288
+  - type: Impersonation (2)
+  - token: 2504
+  - ihandle: 118
+  - sid: S-1-5-18
+  - accountname: {'Name': 'SYSTEM', 'Domain': 'NT AUTHORITY', 'type': 1}
+  - intlvl: System
+  - owner: S-1-5-18
+  - issystem: True
+  - elevationtype: Default (1)
+  - iselevated: True
+  - linkedtoken: None
+  - implevel: Impersonate (2)
+  - appcontainertoken: False
+  [...]
+  - primarysidgroup: S-1-5-18
+  - isrestricted: False
+  - hasrestricitions: True
+  - Mandatory Policy: VALID_MASK
+  - canimpersonate: True
+[...]
+```
+
+This previous output shows an impersonation token located in the pid 2288, which has an integrity level *system*.
+It is possible to impersonate this specific token with the following command:
+```console
+python.exe tmipe.py imptoken --pid 2288 --ihandle 118 -vv
+```
+
+This previous command opens a cmd.exe as *nt authority\system*.
 
 
 Donation
