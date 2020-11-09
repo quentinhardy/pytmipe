@@ -150,6 +150,44 @@ For getting primary and impersonation(s) tokens used in current process:
 python.exe tmipe.py printalltokens --current --full --linked
 ```
 
+Output:
+```console
+- PID: 3212
+------------------------------
+  - PID: 3212
+  - type: Primary (1)
+  - token: 764
+  - hval: None
+  - ihandle: None
+  - sid: S-1-5-18
+  - accountname: {'Name': 'SYSTEM', 'Domain': 'NT AUTHORITY', 'type': 1}
+  - intlvl: System
+  - owner: S-1-5-32-544
+  - Groups:
+    - S-1-5-32-544: {'Name': 'Administrators', 'Domain': 'BUILTIN', 'type': 4} (ENABLED, ENABLED_BY_DEFAULT, OWNER)
+    - S-1-1-0: {'Name': 'Everyone', 'Domain': '', 'type': 5} (ENABLED, ENABLED_BY_DEFAULT, MANDATORY)
+    - S-1-5-11: {'Name': 'Authenticated Users', 'Domain': 'NT AUTHORITY', 'type': 5} (ENABLED, ENABLED_BY_DEFAULT, MANDATORY)
+    - S-1-16-16384: {'Name': 'System Mandatory Level', 'Domain': 'Mandatory Label', 'type': 10} (INTEGRITY_ENABLED, INTEGRITY)
+  - Privileges (User Rights):
+    - SeAssignPrimaryTokenPrivilege: Enabled
+    [...]
+    - SeTrustedCredManAccessPrivilege: Enabled
+  - issystem: True
+  - sessionID: 1
+  - elevationtype: Default (1)
+  - iselevated: True
+  - Linked Token: None
+  - tokensource: b'*SYSTEM*'
+  - primarysidgroup: S-1-5-18
+  - isrestricted: False
+  - hasrestricitions: True
+  - Default DACL:
+    - {'ace_type': 'ALLOW', 'ace_flags': '', 'rights': '0x10000000', 'object_guid': '', 'inherit_object_guid': '', 'account_sid': 'S-1-5-18'}
+    - {'ace_type': 'ALLOW', 'ace_flags': '', 'rights': '0xa0020000', 'object_guid': '', 'inherit_object_guid': '', 'account_sid': 'S-1-5-32-544'}
+  [...]
+  - Mandatory Policy: NO_WRITE_UP
+```
+
 For getting all tokens which are accessible from current thread, organized by pid, when the impersonation is possible only:
 ```console
 python.exe tmipe.py printalltokensbypid --imp-only
