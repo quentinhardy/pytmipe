@@ -7,7 +7,7 @@ Content
 ====
 
 * A __python client__: *tmipe* (*python3 tmipe.py*)
-* A __python library__: *pytmipe*. Useful for including this project in another one (e.g. *tokenmanager.py*)
+* A __python library__: *pytmipe*. Useful for including this project in another one
 * __pytinstaller examples__, for getting __standalones__ exes
 
 Main features
