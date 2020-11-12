@@ -12,7 +12,7 @@ Content
 
 Docs
 ====
-* Slides "Windows Token Manipulation, Impersonation & Privilege Escalation" (English): [Windows_Tokens_Impersonation_PE_Quentin_HARDY_2020_v1.0.pdf](https://github.com/quentinhardy/pytmipe/blob/master/doc/Windows_Tokens_Impersonation_PE_Quentin_HARDY_2020_v1.0.pdf)
+* Slides "Windows Token Manipulation, Impersonation & Privilege Escalation" (English): [link](https://github.com/quentinhardy/pytmipe/blob/master/doc/Windows_Tokens_Impersonation_PE_Quentin_HARDY_2020_v1.0.pdf)
 
 * Article in MISC 112 (French): [link](https://connect.ed-diamond.com/MISC/MISC-112/Manipulation-de-tokens-impersonation-et-elevation-de-privileges)
 
